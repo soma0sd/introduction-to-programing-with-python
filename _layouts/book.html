@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>{% if page.title %}{{page.title}}{% else %}{{site.title}}{% endif %}</title>
+  <link rel="shortcut icon" href="{{ "/favicon.ico" | prepend: site.url }}">
+  <link rel="stylesheet" href="{{ "/css/normalize.css" | prepend: site.url }}">
+  <link rel="stylesheet" href="{{ "/css/jquery.scrollbar.css" | prepend: site.url }}">
+  <link rel="stylesheet" href="{{ "/css/styles.css" | prepend: site.url }}">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3097185090136067",
+            enable_page_level_ads: true
+       });
+  </script>
+</head>
+
+<body>
+  <div id="nav-open-btn" class="shadow-dp-2">
+    <i class="material-icons">menu</i>
+  </div>
+  <div id="nav-overlay"></div>
+  <nav class="shadow-dp-2">
+    <div id="nav-title">
+      <a href="/"><h1>{{site.title}}</h1></a>
+      <h3>{{site.subtitle}}</h3>
+      <hr>
+    </div>
+    <ol id="toc-wrap" class="scrollbar-inner">
+      {% for ch in site.data.toc %}
+        {% assign churls = ch.chapter | split: '|' %}
+        <li><a class="toc-item-{%increment ixtoc%}" href="/{{site.chapterurl}}{{churls[1]|strip}}/">{{churls[0]}}</a></li>
+        {% if ch.sub %}
+        <ol>
+          {% for sub in ch.sub %}
+            {% assign suburls = sub | split: '|' %}
+            <li><a class="toc-item-{%increment ixtoc%}" href="/{{site.chapterurl}}{{suburls[1]|strip}}/">{{suburls[0]}}</a></li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+      {% endfor %}
+      <li></li>
+    </ol>
+  </nav>
+
+  <div id="article-wrap" class="scrollbar-inner">
+    <div id="doc-wrap">
+      <h1 id="doc-title">{%if page.title%}{{page.title}}{%endif%}</h1>
+      {{content}}
+    </div>
+    <footer>
+      <div class="desc">
+      </div>
+      <p class="copyright">Copyright 2018. {{site.author}} All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+<script src="{{ "/js/jquery-3.3.1.min.js" | prepend: site.url }}"></script>
+<script src="{{ "/js/jquery.scrollbar.min.js" | prepend: site.url }}"></script>
+<script src="{{ "/js/functions.js" | prepend: site.url }}"></script>
+</html>

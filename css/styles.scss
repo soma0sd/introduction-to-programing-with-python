@@ -1,0 +1,265 @@
+---
+# 메인 스타일시트
+---
+// 뷰포트 브레이크포인트
+$window-view-small:   600px;
+$window-view-medium:  960px;
+$window-view-large:  1280px;
+$window-view-xlarge: 1920px;
+
+@function Vmin($var){@return "min-width: #{$var}";}
+@function Vmax($var){@return "max-width: #{$var}";}
+@mixin media-min($screen) {
+  @if $screen == s {@media (Vmin($window-view-small)){@content;}}
+  @else if $screen == m {@media (Vmin($window-view-medium)){@content;}}
+  @else if $screen == l {@media (Vmin($window-view-large)){@content;}}
+  @else if $screen == xl {@media (Vmin($window-view-xlarge)){@content;}}
+  @else { @warn "using only [s, m, l, xl]"; }
+}
+
+// 그림자
+.shadow {
+  &-dp-1 {box-shadow: 0 1px 3px rgba(0,0,0,0.12),
+                      0 1px 2px rgba(0,0,0,0.24);}
+  &-dp-2 {box-shadow: 0 3px 6px rgba(0,0,0,0.16),
+                      0 3px 6px rgba(0,0,0,0.23);}
+  &-dp-3 {box-shadow: 0 10px 20px rgba(0,0,0,0.19),
+                      0 6px 6px rgba(0,0,0,0.23);}
+  &-dp-4 {box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+                      0 10px 10px rgba(0,0,0,0.22);}
+  &-dp-5 {box-shadow: 0 19px 38px rgba(0,0,0,0.30),
+                      0 15px 12px rgba(0,0,0,0.22);}
+}
+
+/*
+███████  ██████  ███    ██ ████████
+██      ██    ██ ████   ██    ██
+█████   ██    ██ ██ ██  ██    ██
+██      ██    ██ ██  ██ ██    ██
+██       ██████  ██   ████    ██
+*/
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700|Nanum+Gothic:400,700');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+body {font-family: 'Nanum Gothic', sans-serif;}
+code {font-family: 'Nanum Gothic Coding', monospace;}
+
+/*
+ ██████  ██████  ██       ██████  ██████
+██      ██    ██ ██      ██    ██ ██   ██
+██      ██    ██ ██      ██    ██ ██████
+██      ██    ██ ██      ██    ██ ██   ██
+ ██████  ██████  ███████  ██████  ██   ██
+*/
+// theme
+$color-theme-primary: #3F51B5;
+$color-element-primary: #FAFAFA;
+$color-element-secondary: #FFFFFF;
+
+// text
+$color-dark-primary-text: rgba(0,0,0,.87);
+$color-dark-secondary-text: rgba(0,0,0,.54);
+$color-dark-hint-text: rgba(0,0,0,.38);
+$color-dark-dividers-line: rgba(0,0,0,.12);
+$color-light-primary-text: rgba(255,255,255,1);
+$color-light-secondary-text: rgba(255,255,255,.7);
+$color-light-hint-text: rgba(0,0,0,.5);
+$color-light-dividers-line: rgba(255,255,255,.12);
+
+// base color
+body {
+  background-color: $color-element-primary;
+  color: $color-dark-primary-text;
+}
+
+/*
+ ██████  ██████  ███    ███ ███    ███ ███████ ███    ██
+██      ██    ██ ████  ████ ████  ████ ██      ████   ██
+██      ██    ██ ██ ████ ██ ██ ████ ██ █████   ██ ██  ██
+██      ██    ██ ██  ██  ██ ██  ██  ██ ██      ██  ██ ██
+ ██████  ██████  ██      ██ ██      ██ ███████ ██   ████
+*/
+a {
+  text-decoration: none;
+  color: $color-theme-primary;
+}
+hr {
+  border-color: $color-dark-dividers-line;
+}
+ul {
+  background: url(arrow.gif) no-repeat 7px 7px transparent;
+  list-style-type: none;
+  padding: 0;
+  padding-left: 1.2rem;
+  @include media-min(s){padding-left: 2rem}
+}
+
+
+/*
+███    ██  █████  ██    ██
+████   ██ ██   ██ ██    ██
+██ ██  ██ ███████ ██    ██
+██  ██ ██ ██   ██  ██  ██
+██   ████ ██   ██   ████
+*/
+nav {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.001;
+  position: fixed;
+  top: 0; bottom: 0; left: 0;
+  z-index: 999;
+  padding-top: 1rem;
+  background-color: $color-element-primary;
+  width: calc(100vw - 56px);
+  @include media-min(s) {
+    opacity: 1;
+    width: 300px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+    color: $color-dark-secondary-text;
+  }
+  a {
+    color: $color-dark-primary-text;
+  }
+}
+#nav-open-btn {
+  user-select: none;
+  cursor: pointer;
+  position: fixed;
+  background-color: #3F51B5;
+  border-radius: 50%;
+  bottom: 1rem; left: .5rem;
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 10;
+  .material-icons {
+    color: $color-light-secondary-text;
+    font-size: 1.6rem;
+    line-height: 3rem;
+  }
+}
+#nav-overlay {
+  opacity: 0.001;
+  position: fixed;
+  background-color: rgba(0,0,0,.5);
+  top: 0; bottom: 0; left: 0; right: 0;
+  z-index: 10;
+  @include media-min(m) {display: none;}
+}
+
+/*
+███    ██  █████  ██    ██    ████████  ██████   ██████
+████   ██ ██   ██ ██    ██       ██    ██    ██ ██
+██ ██  ██ ███████ ██    ██ █████ ██    ██    ██ ██
+██  ██ ██ ██   ██  ██  ██        ██    ██    ██ ██
+██   ████ ██   ██   ████         ██     ██████   ██████
+*/
+#toc-wrap {
+  flex: 1;
+  counter-reset: chapter -1;
+  margin: 0;
+  margin-top: 1rem;
+  padding: 0;
+  list-style-type: none;
+  li {
+    padding-left: .5rem;
+    margin: .2rem 0;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    a {
+      margin-right: .5rem;
+      display: block;
+      box-sizing: border-box;
+    }
+  }
+  a:hover,
+  a.active {
+    padding-left: .5rem;
+    border-radius: 2px;
+    background-color: $color-theme-primary;
+    color: $color-light-primary-text;
+  }
+  &>li {margin-left: 0;}
+  &>li a:before {
+    counter-increment: chapter;
+    content: counter(chapter) "장 ";
+  }
+  &>li:first-child a:before {
+    content: ""
+  }
+  &>li:last-child {
+    margin-bottom: 3rem;
+  }
+  ol {
+    counter-reset: sub;
+    list-style-type: none;
+    padding: 0;
+    li {
+      margin-left: .8rem;
+    }
+    li a:before {
+      counter-increment: sub;
+      content: counter(chapter) "." counter(sub) ". ";
+    }
+  }
+}
+
+/*
+ █████  ██████  ████████ ██  ██████ ██      ███████
+██   ██ ██   ██    ██    ██ ██      ██      ██
+███████ ██████     ██    ██ ██      ██      █████
+██   ██ ██   ██    ██    ██ ██      ██      ██
+██   ██ ██   ██    ██    ██  ██████ ███████ ███████
+*/
+body {
+  padding-left: 0;
+  @include media-min(m) {padding-left: 300px;}
+}
+#article-wrap {
+  max-height: 100vh;
+}
+#doc-wrap {
+  min-height: 100vh;
+  max-width: 650px;
+  padding: .5rem;
+  margin: auto;
+}
+#doc-title {
+  border-bottom: $color-dark-dividers-line 2px solid;
+  padding-bottom: .5rem;
+  font-size: 1.5rem;
+  @include media-min(s) {
+    font-size: 2rem;
+  }
+}
+
+/*
+███████  ██████   ██████  ████████ ███████ ██████
+██      ██    ██ ██    ██    ██    ██      ██   ██
+█████   ██    ██ ██    ██    ██    █████   ██████
+██      ██    ██ ██    ██    ██    ██      ██   ██
+██       ██████   ██████     ██    ███████ ██   ██
+*/
+footer {
+  text-align: center;
+  background-color: lighten($color-theme-primary, 20%);
+  color: $color-light-primary-text;
+  .copyright {
+    padding: .5rem;
+    margin: 0;
+    background-color: $color-theme-primary;
+  }
+}
