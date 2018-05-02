@@ -10,7 +10,7 @@ var viewposrtMedium =  960;
 var viewposrtLarge =  1280;
 var viewposrtXLarge = 1920;
 
-var pathname = window.location.pathname;
+var thisUrl = window.location.href;
 
 var $nav = $("nav");
 var $navBtn = $("#nav-open-btn");
@@ -37,10 +37,9 @@ function showSideNav(vel = "fast"){
   }
 }
 function SelMenuNow(){
-  if (pathname == "/"){return null}
   let output = null;
   $toc.find("a").each(function(i, elem){
-    if (pathname == $(this).attr("href")) {
+    if (thisUrl == $(this).attr("href")) {
       $(this).addClass("active");
       output = $(this);
     } else {
