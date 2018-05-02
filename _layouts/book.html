@@ -25,19 +25,19 @@
   <div id="nav-overlay"></div>
   <nav class="shadow-dp-2">
     <div id="nav-title">
-      <a href="/"><h1>{{site.title}}</h1></a>
+      <a href="{{site.url}}{{site.baseurl}}"><h1>{{site.title}}</h1></a>
       <h3>{{site.subtitle}}</h3>
       <hr>
     </div>
     <ol id="toc-wrap" class="scrollbar-inner">
       {% for ch in site.data.toc %}
         {% assign churls = ch.chapter | split: '|' %}
-        <li><a class="toc-item-{%increment ixtoc%}" href="/{{site.chapterurl}}{{churls[1]|strip}}/">{{churls[0]}}</a></li>
+        <li><a class="toc-item-{%increment ixtoc%}" href="{{site.url}}{{site.baseurl}}/{{site.chapterurl}}{{churls[1]|strip}}/">{{churls[0]}}</a></li>
         {% if ch.sub %}
         <ol>
           {% for sub in ch.sub %}
             {% assign suburls = sub | split: '|' %}
-            <li><a class="toc-item-{%increment ixtoc%}" href="/{{site.chapterurl}}{{suburls[1]|strip}}/">{{suburls[0]}}</a></li>
+            <li><a class="toc-item-{%increment ixtoc%}" href="{{site.url}}{{site.baseurl}}/{{site.chapterurl}}{{suburls[1]|strip}}/">{{suburls[0]}}</a></li>
           {% endfor %}
         </ol>
         {% endif %}
