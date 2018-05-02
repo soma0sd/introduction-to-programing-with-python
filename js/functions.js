@@ -38,8 +38,13 @@ function showSideNav(vel = "fast"){
 }
 function SelMenuNow(){
   let output = null;
+  let tmpUrlParts = thisUrl.split('/');
+  let thisFile = tmpUrlParts.pop() || tmpUrlParts.pop();
+  let elemFile = null;
   $toc.find("a").each(function(i, elem){
-    if (thisUrl == $(this).attr("href")) {
+    tmpUrlParts = $(this).attr("href").split('/');
+    elemFile = tmpUrlParts.pop() || tmpUrlParts.pop();
+    if (thisFile == elemFile) {
       $(this).addClass("active");
       output = $(this);
     } else {
