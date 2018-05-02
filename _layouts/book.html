@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <title>{% if page.title %}{{page.title}}{% else %}{{site.title}}{% endif %}</title>
-  <link rel="shortcut icon" href="{{ "/favicon.ico" | prepend: site.url }}">
-  <link rel="stylesheet" href="{{ "/css/normalize.css" | prepend: site.url }}">
-  <link rel="stylesheet" href="{{ "/css/jquery.scrollbar.css" | prepend: site.url }}">
-  <link rel="stylesheet" href="{{ "/css/styles.css" | prepend: site.url }}">
+  <link rel="shortcut icon" href="{{ "/favicon.ico" | prepend: site.url | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ "/css/normalize.css" | prepend: site.url | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ "/css/jquery.scrollbar.css" | prepend: site.url | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ "/css/styles.css" | prepend: site.url | prepend: site.baseurl }}">
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
        (adsbygoogle = window.adsbygoogle || []).push({
@@ -58,7 +58,7 @@
     </footer>
   </div>
 </body>
-<script src="{{ "/js/jquery-3.3.1.min.js" | prepend: site.url }}"></script>
-<script src="{{ "/js/jquery.scrollbar.min.js" | prepend: site.url }}"></script>
-<script src="{{ "/js/functions.js" | prepend: site.url }}"></script>
+<script src="{{ "/js/jquery-3.3.1.min.js" | prepend: site.url | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/jquery.scrollbar.min.js" | prepend: site.url | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/functions.js" | prepend: site.url | prepend: site.baseurl }}"></script>
 </html>
