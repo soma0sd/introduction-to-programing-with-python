@@ -96,7 +96,59 @@ ol {
   @include media-min(s){padding-left: 2rem}
 }
 ul {background: url(arrow.gif) no-repeat 7px 7px transparent}
+table {
+  margin: .5rem 0;
+  width: 100%;
+  box-sizing: border-box;
+  thead,
+  tbody {
+    border-bottom: $color-dark-dividers-line 3px solid;
+    border-top: $color-dark-dividers-line 3px solid;
+  }
+}
+code.highlighter-rouge {
+  padding: 2px;
+  border-radius: 5px;
+  background-color: $color-dark-dividers-line;
+}
+figure.highlight {
+  margin: 1rem .5rem;
+  padding: .5rem;
+  border-radius: .4rem;
+  border: solid 2px $color-dark-dividers-line;
+  background-color: $color-element-secondary;
+}
+code .lineno {
+  user-select: none;
+  text-align: right;
+  font-weight: 600;
+  padding-right: 3px;
+  color: lighten($color-theme-primary, 0%);
+}
+.highlight {
+  tr {
+    background: repeating-linear-gradient(
+      0deg,
+      lighten($color-theme-primary, 45%),
+      lighten($color-theme-primary, 45%) 1.4rem,
+      lighten($color-theme-primary, 60%) 1.4rem,
+      lighten($color-theme-primary, 60%) 2.8rem,
+    );
+  }
+  td.code {
+    padding-left: 5px;
+    border-left: $color-dark-dividers-line 2px solid;
+  }
+  table {
+    border-spacing: 0;
+    -webkit-border-horizontal-spacing: 0;
+    -webkit-border-vertical-spacing: 0;
+  }
+}
+pre {margin: 0;}
 
+.left {float: left;}
+.right{float: right;}
 
 /*
 ███    ██  █████  ██    ██
@@ -170,6 +222,31 @@ nav {
   top: 0; bottom: 0; left: 0; right: 0;
   z-index: 10;
   @include media-min(m) {display: none;}
+}
+.btn.doc {
+  display: inline-block;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  font-size: .7rem;
+  border-radius: 2px;
+  background-color: $color-theme-primary;
+  color: $color-light-primary-text;
+  margin: .5rem;
+  padding: 0 .5rem;
+  @include media-min(s) {
+    height: 2rem;
+    line-height: 2rem;
+    font-size: inherit;
+  }
+  i.material-icons {
+    vertical-align: middle;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    @include media-min(s) {
+      line-height: 2rem;
+      font-size: 1.5;
+    }
+  }
 }
 
 /*
@@ -248,6 +325,8 @@ body {
 }
 
 #doc-title {
+  max-width: 650px;
+  margin: auto;
   border-bottom: $color-dark-dividers-line 2px solid;
   padding: .5rem;
   margin-bottom: 0;

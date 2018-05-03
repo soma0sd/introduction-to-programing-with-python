@@ -8,6 +8,7 @@
 - chapter: 개발 도구|environment
   sub:
     - 아나콘다 설치|anaconda-install
+    - 스파이더|spyder
 #
 # - chapter: 데이터를 임시로 담아두기|variables
 #   sub:

@@ -32,8 +32,6 @@ layout: book
 </span>
 {: .row}
 
-
-
 ![04](../anaconda-install-04.png){: .col .s12 .m4}
 <span class="col s12 m8">
 **Destination Folder**<br>
@@ -49,3 +47,14 @@ layout: book
 컴퓨터에 이미 파이썬이 설치되어 있더라도 지금 설치하는 파이썬을 기본적으로 사용합니다.<br>
 </span>
 {: .row}
+
+# 아나콘다 살펴보기
+
+아나콘다를 설치하면 프로그램 그룹 `Anaconda3`에 새로운 응용프로그램들이 등록되어 있는것을 볼 수 있습니다. 윈도우 운영체제의 경우에는 `시작`>`모든 앱`(혹은 `프로그램`)에 프로그램 그룹이 있습니다.
+
+| 아이콘 | 설명 |
+|:-:|-|
+|![](../../img/anaconda-navigator.png){:width="50"}| **Anaconda Navigator**<br>아나콘다의 부가기능을 설치하고 실행할 수 있으며 Python 관련 설정을 돕는 프로그램 |
+|![](../../img/anaconda-prompt.png){:width="50"}| **Anaconda Prompt**<br>명령어를 이용해 직접 아나콘다를 제어할 수 있습니다. |
+|![](../../img/jupyter-notebook.png){:width="50"}| **Jupyter Notebook**<br>대화하듯 명령을 작성하고 편집하는 스크립트와 실행결과를 함께 담아 문서를 만들 수 있습니다. |
+|![](../../img/spyder.png){:width="50"}| **Spyder**<br>명령을 문서형태로 편집하고 실행할 수 있는 프로그램 |

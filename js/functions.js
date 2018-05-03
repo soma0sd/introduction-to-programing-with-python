@@ -26,6 +26,8 @@ var $toc = $("#toc-wrap");
 var $articleWrap = $("#article-wrap");
 var $docWrap = $("#doc-wrap");
 
+var $nowDocLink = SelDocNow();
+
 /*
 ███████ ██    ██ ███    ██  ██████
 ██      ██    ██ ████   ██ ██
@@ -114,11 +116,10 @@ setInterval(function(){
 ██ ██   ████ ██    ██
 */
 $document.ready(function(){
-  let $nowDoc = SelDocNow();
   let $nowToc = SelTocNow();
 
-  if ($nowDoc){
-    $("#doc-title").html($nowDoc.html());}
+  if ($nowDocLink){
+    $("#doc-title").html($nowDocLink.html());}
 
   if($window.width() < viewposrtMedium){
     hideSideNav(0);
@@ -134,5 +135,20 @@ $document.ready(function(){
   if ($articleWrap.scrollTop() > 0) {
     $topBtn.fadeIn("fast");}
   else {
-    $topBtn.fadeOut("fast");    }
+    $topBtn.fadeOut("fast");}
+
+  let $btnBefore = $(".btn.doc.before");
+  let $btnNext = $(".btn.doc.next");
+  let docNum = $nowDocLink.attr("toc-number");
+  let $docBeforeLink = $("[toc-number='"+(docNum - 1)+"']");
+  let $docNextLink   = $("[toc-number='"+(parseInt(docNum) +1 )+"']");
+  if (!$nowDocLink) {$btnBefore.hide(); $btnNext.hide();}
+  if ($docBeforeLink.html()){
+    $btnBefore.find("span").html($docBeforeLink.html());
+    $btnBefore.attr("href",$docBeforeLink.attr("href"));
+  } else {$(".btn.doc.before").hide();}
+  if ($docNextLink.html()){
+    $btnNext.find("span").html($docNextLink.html());
+    $btnNext.attr("href",$docNextLink.attr("href"));
+  } else {$(".btn.doc.next").hide();}
 });
