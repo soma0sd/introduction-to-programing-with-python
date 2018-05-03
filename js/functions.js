@@ -12,10 +12,18 @@ var viewposrtXLarge = 1920;
 
 var thisUrl = window.location.href;
 
+var $window = $(window);
+var $document = $(document);
+
+var $scrbar = null;
+
 var $nav = $("nav");
 var $navBtn = $("#nav-open-btn");
 var $navOverlay = $("#nav-overlay");
+var $topBtn = $("#nav-top-btn");
+
 var $toc = $("#toc-wrap");
+var $articleWrap = $("#article-wrap");
 var $docWrap = $("#doc-wrap");
 
 /*
@@ -36,14 +44,16 @@ function showSideNav(vel = "fast"){
     $navOverlay.fadeIn(vel);
   }
 }
-function SelMenuNow(){
+function lastSegment(url) {
+  let segments = url.split('#').shift().split('/');
+  return segments.pop() || segments.pop();
+}
+function SelDocNow(){
   let output = null;
-  let tmpUrlParts = thisUrl.split('/');
-  let thisFile = tmpUrlParts.pop() || tmpUrlParts.pop();
   let elemFile = null;
+  let thisFile = lastSegment(thisUrl);
   $toc.find("a").each(function(i, elem){
-    tmpUrlParts = $(this).attr("href").split('/');
-    elemFile = tmpUrlParts.pop() || tmpUrlParts.pop();
+    elemFile = lastSegment($(this).attr("href"));
     if (thisFile == elemFile) {
       $(this).addClass("active");
       output = $(this);
@@ -54,6 +64,13 @@ function SelMenuNow(){
   return output;
 }
 
+function SelTocNow(){
+  let segments = thisUrl.split('#');
+  if(segments.length > 1){return "#" + segments.pop();}
+  else {return null;}
+}
+
+
 /*
 ███████ ██    ██ ███████ ███    ██ ████████
 ██      ██    ██ ██      ████   ██    ██
@@ -63,7 +80,31 @@ function SelMenuNow(){
 */
 $navOverlay.click(function(){hideSideNav()});
 $navBtn.click(function(){showSideNav()});
+$topBtn.click(function(){
+  $articleWrap.animate({scrollTop:0}, 500, 'swing')});
 
+$window.resize(function(){
+  if($(window).width() < viewposrtMedium){
+    hideSideNav(0);
+    $navOverlay.css("opacity", 1);
+    $nav.css("opacity", 1);
+  } else {
+    showSideNav(0);
+  }
+});
+var hasArticleScroll = false;
+$articleWrap.scroll(function(){
+  hasArticleScroll = true;
+});
+setInterval(function(){
+  if(hasArticleScroll){
+    if ($articleWrap.scrollTop() > 0) {
+      $topBtn.fadeIn("fast");}
+    else {
+      $topBtn.fadeOut("fast");    }
+    $scrbar.show().fadeOut(1000);
+    hasArticleScroll = false;}
+});
 
 /*
 ██ ███    ██ ██ ████████
@@ -72,24 +113,26 @@ $navBtn.click(function(){showSideNav()});
 ██ ██  ██ ██ ██    ██
 ██ ██   ████ ██    ██
 */
-var $nowDoc = null;
-$(document).ready(function(){
-  $nowDoc = SelMenuNow();
-  if ($nowDoc){$("#doc-title").html($nowDoc.html());}
-  if($(window).width() < viewposrtMedium){
-    hideSideNav(0);
-    $navOverlay.css("opacity", 1);
-    $nav.css("opacity", 1);
-  }
-  $(".scrollbar-inner").scrollbar();
-});
+$document.ready(function(){
+  let $nowDoc = SelDocNow();
+  let $nowToc = SelTocNow();
 
-$(window).resize(function(){
-  if($(window).width() < viewposrtMedium){
+  if ($nowDoc){
+    $("#doc-title").html($nowDoc.html());}
+
+  if($window.width() < viewposrtMedium){
     hideSideNav(0);
     $navOverlay.css("opacity", 1);
-    $nav.css("opacity", 1);
-  } else {
-    showSideNav(0);
-  }
+    $nav.css("opacity", 1);}
+
+  $(".scrollbar-inner").scrollbar();
+  $scrbar = $(".scroll-element.scroll-y");
+  $scrbar.hide();
+
+  if ($nowToc){
+    $articleWrap.scrollTop($(decodeURIComponent($nowToc)).offset().top);}
+  if ($articleWrap.scrollTop() > 0) {
+    $topBtn.fadeIn("fast");}
+  else {
+    $topBtn.fadeOut("fast");    }
 });

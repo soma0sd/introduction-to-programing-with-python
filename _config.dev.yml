@@ -1,0 +1,16 @@
+title: 프로그래밍 기초
+subtitle: with Python
+email: soma0sd@gmail.custom
+author: soma0sd
+description: >
+  복잡하고 깊은 설명보다는 바로 활용할 수 있도록 작성한
+  프로그래밍을 처음 접하는 사람들을 위한 온라인 교재
+url: ""
+baseurl: "/"
+chapterurl: "doc/"
+
+# Build settings
+timezone: Asia/Seoul
+markdown: kramdown
+permalink: pretty
+encoding: UTF-8

@@ -1,29 +1,25 @@
 # 목차 데이터 파일
 - chapter: 코스 소개|introduction
 
-- chapter: 알고리즘|algorithm
-  sub:
-    - 미로 탈출|algorithm-maze-solve
-    - 하노이 탑|algorithm-tower-of-hanoi
-    - 이진 탐색|algorithm-binary-search
-
 - chapter: 컴퓨팅 사고력|computational-thinking
-
-- chapter: 개발 환경 만들기|environment
   sub:
-    - 스파이더(spyder)|environment-spyder
+    - 알고리즘 만들기|algorithm-design
 
-- chapter: 데이터를 임시로 담아두기|variables
+- chapter: 개발 도구|environment
   sub:
-    - 수치형 변수|variables-numeric
-    - 열거형 변수|variables-enumeration
-
-- chapter: 판단과 반복|if-loop
-  sub:
-    - 판단(IF)|if-loop-if
-    - 반복(FOR, WHILE)|if-loop-loop
-
-- chapter: 함수와 패키지|function-package
-  sub:
-    - 함수|function-package-function
-    - 패키지|function-package-package
+    - 아나콘다 설치|anaconda-install
+#
+# - chapter: 데이터를 임시로 담아두기|variables
+#   sub:
+#     - 수치형 변수|variables-numeric
+#     - 열거형 변수|variables-enumeration
+#
+# - chapter: 판단과 반복|if-loop
+#   sub:
+#     - 판단(IF)|if-loop-if
+#     - 반복(FOR, WHILE)|if-loop-loop
+#
+# - chapter: 함수와 패키지|function-package
+#   sub:
+#     - 함수|function-package-function
+#     - 패키지|function-package-package

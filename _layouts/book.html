@@ -22,6 +22,9 @@
   <div id="nav-open-btn" class="shadow-dp-2">
     <i class="material-icons">menu</i>
   </div>
+  <div id="nav-top-btn" class="shadow-dp-2">
+    <i class="material-icons">keyboard_arrow_up</i>
+  </div>
   <div id="nav-overlay"></div>
   <nav class="shadow-dp-2">
     <div id="nav-title">
@@ -37,7 +40,7 @@
         <ol>
           {% for sub in ch.sub %}
             {% assign suburls = sub | split: '|' %}
-            <li><a class="toc-item-{%increment ixtoc%}" href="{{site.url}}{{site.baseurl}}{{site.chapterurl}}{{suburls[1]|strip}}/">{{suburls[0]}}</a></li>
+            <li><a class="toc-item-{%increment ixtoc%}" href="{{site.url}}{{site.baseurl}}{{site.chapterurl}}{{churls[1]|strip}}/{{suburls[1]|strip}}/">{{suburls[0]}}</a></li>
           {% endfor %}
         </ol>
         {% endif %}
@@ -47,8 +50,8 @@
   </nav>
 
   <div id="article-wrap" class="scrollbar-inner">
+    <h1 id="doc-title">{%if page.title%}{{page.title}}{%endif%}</h1>
     <div id="doc-wrap">
-      <h1 id="doc-title">{%if page.title%}{{page.title}}{%endif%}</h1>
       {{content}}
     </div>
     <footer>
