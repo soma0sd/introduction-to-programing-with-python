@@ -43,9 +43,9 @@ layout: book
 
 ![05](../anaconda-install-05.png){: .col .s12 .m4}
 <span class="col s12 m8">
-**Add Anaconda to my PATH environment variable**
-윈도우 시스템의 환경변수에 아나콘다의 응용프로그램과 스크립트 디렉토리를 추가합니다.
-**Register Anaconda as my default Python 3.6**
-컴퓨터에 이미 파이썬이 설치되어 있더라도 지금 설치하는 파이썬을 기본적으로 사용합니다.
+**Add Anaconda to my PATH environment variable**<br>
+윈도우 시스템의 환경변수에 아나콘다의 응용프로그램과 스크립트 디렉토리를 추가합니다.<br>
+**Register Anaconda as my default Python 3.6**<br>
+컴퓨터에 이미 파이썬이 설치되어 있더라도 지금 설치하는 파이썬을 기본적으로 사용합니다.<br>
 </span>
 {: .row}
