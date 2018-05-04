@@ -139,10 +139,16 @@ $document.ready(function(){
 
   let $btnBefore = $(".btn.doc.before");
   let $btnNext = $(".btn.doc.next");
-  let docNum = $nowDocLink.attr("toc-number");
-  let $docBeforeLink = $("[toc-number='"+(docNum - 1)+"']");
-  let $docNextLink   = $("[toc-number='"+(parseInt(docNum) +1 )+"']");
-  if (!$nowDocLink) {$btnBefore.hide(); $btnNext.hide();}
+  let docNum = null;
+  let $docBeforeLink = null;
+  let $docNextLink   = null;
+  if ($nowDocLink) {
+    docNum = $nowDocLink.attr("toc-number");
+    $docBeforeLink = $("[toc-number='"+(docNum - 1)+"']");
+    $docNextLink   = $("[toc-number='"+(parseInt(docNum) +1 )+"']");
+  } else {
+    $btnBefore.hide(); $btnNext.hide();
+  }
   if ($docBeforeLink.html()){
     $btnBefore.find("span").html($docBeforeLink.html());
     $btnBefore.attr("href",$docBeforeLink.attr("href"));

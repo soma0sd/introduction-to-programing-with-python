@@ -38,11 +38,14 @@ $window-view-xlarge: 1920px;
 ██      ██    ██ ██  ██ ██    ██
 ██       ██████  ██   ████    ██
 */
-@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700|Nanum+Gothic:400,700');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700|Nanum+Gothic:400,700,800&subset=korean');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 body {font-family: 'Nanum Gothic', sans-serif;}
 code {font-family: 'Nanum Gothic Coding', monospace;}
+body, code {font-weight: 400;}
+strong {font-weight: 700;}
+h1, h2 {font-weight: 800;}
 
 /*
  ██████  ██████  ██       ██████  ██████
@@ -111,6 +114,7 @@ code.highlighter-rouge {
   border-radius: 5px;
   background-color: $color-dark-dividers-line;
 }
+div.highlighter-rouge,
 figure.highlight {
   margin: 1rem .5rem;
   padding: .5rem;
@@ -118,10 +122,11 @@ figure.highlight {
   border: solid 2px $color-dark-dividers-line;
   background-color: $color-element-secondary;
 }
+div.highlighter-rouge pre {white-space: pre-wrap;}
 code .lineno {
   user-select: none;
   text-align: right;
-  font-weight: 600;
+  font-weight: 700;
   padding-right: 3px;
   color: lighten($color-theme-primary, 0%);
 }
@@ -146,6 +151,18 @@ code .lineno {
   }
 }
 pre {margin: 0;}
+dl {
+  dt {
+    margin-top: 1rem;
+    font-weight: 700;
+  }
+  dt:first-child {margin-top: 0;}
+  dd {
+    margin: 0;
+    margin-left: 0.7rem;
+    font-size: 0.9em;
+  }
+}
 
 .left {float: left;}
 .right{float: right;}
@@ -270,7 +287,7 @@ nav {
     margin: .4rem 0;
     height: 1.5rem;
     line-height: 1.5rem;
-    font-weight: 500;
+    font-weight: 400;
     a {
       margin-right: .5rem;
       display: block;
@@ -281,8 +298,14 @@ nav {
   a.active {
     padding-left: .5rem;
     border-radius: 2px;
+    font-weight: 700;
     background-color: $color-theme-primary;
     color: $color-light-primary-text;
+  }
+  a:hover {
+    background-color: lighten($color-theme-primary, 20%);
+    color: $color-light-primary-text;
+    font-weight: 700;
   }
   &>li {margin-left: 0;}
   &>li a:before {
@@ -367,10 +390,12 @@ body {
     &.left {float: left; display: block;}
   }
   h1 {
+    margin-top: 2.5rem;
     font-size: 1.2rem;
     padding-bottom: .5rem;
     border-bottom: $color-dark-dividers-line 1px solid;
   }
+  h1:first-child {}
   &>h1:before {
     counter-increment: doc_chapter;
     content: counter(doc_chapter) ". ";
@@ -388,7 +413,7 @@ body {
       color: $color-light-secondary-text;
       background-color: $color-theme-primary;
       font-size: .8rem;
-      font-weight: 800;
+      font-weight: 700;
       line-height: 1.4rem;
       text-align: center;
       vertical-align: middle;
