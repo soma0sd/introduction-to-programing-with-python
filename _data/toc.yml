@@ -1,26 +1,12 @@
 # 목차 데이터 파일
+
 - chapter: 코스 소개|introduction
 
 - chapter: 컴퓨팅 사고력|computational-thinking
   sub:
-    - 알고리즘 만들기|algorithm-design
+    - 포물선 운동|parabolic-motion
 
 - chapter: 개발 도구|environment
   sub:
     - 아나콘다 설치|anaconda-install
     - 스파이더|spyder
-#
-# - chapter: 데이터를 임시로 담아두기|variables
-#   sub:
-#     - 수치형 변수|variables-numeric
-#     - 열거형 변수|variables-enumeration
-#
-# - chapter: 판단과 반복|if-loop
-#   sub:
-#     - 판단(IF)|if-loop-if
-#     - 반복(FOR, WHILE)|if-loop-loop
-#
-# - chapter: 함수와 패키지|function-package
-#   sub:
-#     - 함수|function-package-function
-#     - 패키지|function-package-package
