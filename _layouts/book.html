@@ -37,8 +37,8 @@
     <ol id="toc-wrap" class="scrollbar-inner">
       {% for ch in site.data.toc %}
         {% assign churls = ch.chapter | split: '|' %}
-        {% if ch.sub %}
         <li><a toc-number="{%increment ixtoc%}" href="{{site.url}}{{site.baseurl}}{{site.chapterurl}}{{churls[1]|strip}}/">{{churls[0]}}</a></li>
+        {% if ch.sub %}
         <ol>
           {% for sub in ch.sub %}
             {% assign suburls = sub | split: '|' %}
