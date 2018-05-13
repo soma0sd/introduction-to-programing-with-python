@@ -136,9 +136,18 @@ code .lineno {
       0deg,
       lighten($color-theme-primary, 45%),
       lighten($color-theme-primary, 45%) 1.4rem,
-      lighten($color-theme-primary, 60%) 1.4rem,
+      lighten($color-theme-primary, 60%) 1.5rem,
       lighten($color-theme-primary, 60%) 2.8rem,
     );
+    @include media-min(s){
+      background: repeating-linear-gradient(
+        180deg,
+        lighten($color-theme-primary, 45%),
+        lighten($color-theme-primary, 45%) 1.45rem,
+        lighten($color-theme-primary, 60%) 1.55rem,
+        lighten($color-theme-primary, 60%) 3.0rem,
+      );
+    }
   }
   td.code {
     padding-left: 5px;
